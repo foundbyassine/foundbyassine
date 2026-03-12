@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Foundbyassine — Boutique COD Maroc</title>
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <meta name="description" content="Boutique Foundbyassine : produits utiles, paiement à la livraison partout au Maroc." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://foundbyassine.shop" />
+  <meta property="og:title" content="Foundbyassine — Boutique COD Maroc" />
+  <meta property="og:description" content="Produits utiles livrés partout au Maroc. Paiement à la réception." />
+  <meta property="og:url" content="https://foundbyassine.shop" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://foundbyassine.shop/images/shower-head-1.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Foundbyassine — Boutique COD Maroc" />
+  <meta name="twitter:description" content="Produits utiles livrés partout au Maroc. Paiement à la réception." />
+  <meta name="twitter:image" content="https://foundbyassine.shop/images/shower-head-1.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --bg-soft: #f6f6f6;
+      --panel: #ffffff;
+      --text: #111111;
+      --muted: #888888;
+      --gold: #c8860a;
+      --gold-light: #d4920f;
+      --gold-dim: rgba(200,134,10,0.12);
+      --line: rgba(0,0,0,0.08);
+      --line-soft: rgba(0,0,0,0.05);
+      --green: #22c55e;
+      --green-dim: rgba(34,197,94,0.08);
+      --shadow: 0 8px 40px rgba(0,0,0,0.10);
+      --shadow-sm: 0 2px 12px rgba(0,0,0,0.07);
+      --font-display: 'Sora', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --radius-card: 16px;
+      --radius-pill: 999px;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body { font-family: var(--font-body); color: var(--text); background: var(--bg); min-height: 100vh; overflow-x: hidden; }
+    body.modal-open { overflow: hidden; }
+    button, input, textarea, select { font: inherit; }
+    button { border: 0; background: none; cursor: pointer; }
+    a { text-decoration: none; }
+
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      pointer-events: none; z-index: 0; opacity: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    }
+
+    .wrap { width: min(calc(100% - 32px), 1200px); margin: 0 auto; position: relative; z-index: 1; }
+
+    /* ── TICKER ── */
+    .ticker { overflow: hidden; white-space: nowrap; border-bottom: 1px solid var(--line); background: rgba(255,255,255,0.97); position: relative; z-index: 1; }
+    .ticker-track { display: inline-block; padding: 11px 0; min-width: 200%; animation: ticker-scroll 32s linear infinite; color: var(--muted); font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; font-family: var(--font-display); }
+    .ticker-dot { color: var(--gold); margin: 0 18px; }
+    @keyframes ticker-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ── NAV ── */
+    .nav { transition: transform 0.3s ease, opacity 0.3s ease; position: sticky; top: 0; z-index: 100; margin: 0 auto; width: 100%; max-width: 100%; border-radius: 0; padding: 12px 24px; background: rgba(255,255,255,0.98); display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 12px 16px; border-radius: var(--radius-pill); background: rgba(255,255,255,1); border: 1px solid rgba(0,0,0,0.15); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); box-shadow: 0 4px 24px rgba(0,0,0,0.12), 0 1px 4px rgba(0,0,0,0.08); }
+    .brand { font-family: var(--font-display); font-weight: 800; letter-spacing: -0.04em; font-size: 17px; display: flex; align-items: center; gap: 8px; color: var(--text); }
+    .brand .brand-dot { flex-shrink: 0; }
+    .brand .brand-label { display: flex; gap: 0; }
+    .brand-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); display: inline-block; box-shadow: 0 0 8px var(--gold); animation: pulse-dot 2.5s ease-in-out infinite; }
+    @keyframes pulse-dot { 0%,100% { box-shadow: 0 0 6px var(--gold); } 50% { box-shadow: 0 0 16px var(--gold); } }
+    .brand span { color: var(--gold); }
+    .brand-name { color: var(--text); letter-spacing: -0.04em; }
+    .brand-gold { color: var(--gold); }
+    .nav-actions { display: flex; gap: 10px; align-items: center; }
+
+    .pill { display: inline-flex; align-items: center; justify-content: center; gap: 7px; min-height: 42px; padding: 0 20px; border-radius: var(--radius-pill); background: #ffffff; border: 1.5px solid rgba(0,0,0,0.15); color: var(--text); font-weight: 600; font-size: 13.5px; cursor: pointer; transition: all 0.2s ease; font-family: var(--font-display); letter-spacing: -0.01em; white-space: nowrap; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+    .pill:hover { background: #f0f0f0; color: var(--text); border-color: rgba(0,0,0,0.25); box-shadow: 0 2px 8px rgba(0,0,0,0.12); }
+    .pill.gold { background: var(--gold); color: #1a1410; border-color: var(--gold); font-weight: 700; box-shadow: 0 4px 20px rgba(255,215,0,0.35); }
+    .pill.gold:hover { background: var(--gold-light); box-shadow: 0 6px 28px rgba(255,215,0,0.45); transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .hero { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; padding: 56px 0 40px; }
+    .hero-left { display: flex; flex-direction: column; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: var(--radius-pill); border: 1px solid var(--line); background: rgba(255,255,255,0.04); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); font-weight: 700; font-family: var(--font-display); width: fit-content; }
+    h1 { font-family: var(--font-display); margin: 20px 0 0; font-size: clamp(36px, 5vw, 66px); line-height: 0.97; letter-spacing: -0.055em; font-weight: 800; }
+    h1 em { font-style: normal; color: var(--gold); }
+    .hero-sub { margin: 18px 0 0; color: var(--muted); font-size: 15px; line-height: 1.7; max-width: 460px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+
+    /* social proof bar under hero CTA */
+    .hero-proof { display: flex; align-items: center; gap: 14px; margin-top: 20px; }
+    .proof-avatars { display: flex; }
+    .proof-avatars span { width: 30px; height: 30px; border-radius: 50%; background: var(--panel); border: 2px solid var(--bg); display: flex; align-items: center; justify-content: center; font-size: 13px; margin-left: -8px; }
+    .proof-avatars span:first-child { margin-left: 0; }
+    .proof-text { font-size: 12.5px; color: var(--muted); line-height: 1.4; }
+    .proof-text strong { color: var(--text); font-weight: 600; }
+    .stars-sm { color: var(--gold); font-size: 11px; letter-spacing: 1px; }
+
+    /* ── HERO CARD ── */
+    .hero-card { padding: 24px; border-radius: 28px; background: #f6f6f6; border: 1px solid var(--line); position: relative; overflow: hidden; }
+    .hero-card::before { content: ''; position: absolute; top: -60px; right: -60px; width: 180px; height: 180px; border-radius: 50%; background: radial-gradient(circle, rgba(199,162,122,0.1) 0%, transparent 70%); pointer-events: none; }
+    .hero-card-label { font-family: var(--font-display); font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .stat { padding: 16px 14px; border-radius: 18px; background: #ffffff; border: 1px solid var(--line); text-align: center; transition: background 0.2s; }
+    .stat:hover { background: #f0f0f0; }
+    .stat strong { display: block; font-size: 22px; letter-spacing: -0.05em; font-family: var(--font-display); font-weight: 800; }
+    .stat span { color: var(--muted); font-size: 11.5px; display: block; margin-top: 3px; }
+    .divider { height: 1px; background: var(--line); margin: 18px 0; }
+    .trust-row { display: flex; flex-direction: column; gap: 10px; }
+    .trust-item { display: flex; align-items: center; gap: 12px; font-size: 13px; }
+    .trust-icon { width: 32px; height: 32px; border-radius: 9px; background: var(--gold-dim); border: 1px solid rgba(199,162,122,0.2); display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+    .trust-item strong { color: var(--text); font-weight: 600; display: block; font-size: 13px; margin-bottom: 1px; }
+    .trust-item span { font-size: 11.5px; color: var(--muted); }
+
+    /* ── SECTION HEAD ── */
+    .section-head { padding-top: 20px; padding-bottom: 4px; }
+    .section-head h2 { font-family: var(--font-display); margin: 10px 0 0; font-size: clamp(26px, 3.5vw, 44px); letter-spacing: -0.05em; font-weight: 800; }
+    .section-head p { margin: 10px 0 0; color: var(--muted); line-height: 1.75; max-width: 600px; font-size: 15px; }
+
+    /* ── GRID ── */
+    .grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 16px; padding: 24px 0 60px; }
+    .card { border-radius: var(--radius-card); overflow: hidden; background: #ffffff; border: 1.5px solid rgba(0,0,0,0.08); box-shadow: 0 2px 12px rgba(0,0,0,0.08); transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease; cursor: pointer; display: flex; flex-direction: column; }
+    .card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(0,0,0,0.15); border-color: var(--gold); }
+    .card:hover .card-arrow { transform: translateX(4px); }
+    .card:hover .card-media img { transform: scale(1.04); }
+
+    .card-media { position: relative; aspect-ratio: 1/1; background: #ffffff; overflow: hidden; }
+    .card-media img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+    .badge { position: absolute; top: 12px; left: 12px; padding: 6px 11px; border-radius: var(--radius-pill); background: rgba(18,15,12,0.92); border: 1px solid rgba(255,255,255,0.12); font-size: 10.5px; color: var(--muted); font-weight: 700; font-family: var(--font-display); box-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+    .badge.promo { border-color: var(--gold); color: var(--gold); }
+    .price-tag { position: absolute; bottom: 12px; right: 12px; padding: 7px 13px; border-radius: var(--radius-pill); background: rgba(18,15,12,0.95); border: 1px solid rgba(255,255,255,0.12); font-size: 13px; color: var(--text); font-weight: 800; font-family: var(--font-display); box-shadow: 0 3px 14px rgba(0,0,0,0.55); letter-spacing: -0.02em; }
+
+    /* stock indicator on card */
+    .stock-bar { position: absolute; bottom: 0; left: 0; right: 0; padding: 7px 12px; background: linear-gradient(0deg, rgba(18,15,12,0.95) 0%, transparent 100%); }
+    .stock-track { height: 3px; background: rgba(255,255,255,0.1); border-radius: 2px; overflow: hidden; }
+    .stock-fill { height: 100%; border-radius: 2px; background: var(--gold); transition: width 0.3s; }
+    .stock-label { font-size: 10px; color: var(--muted); font-family: var(--font-display); font-weight: 600; letter-spacing: 0.05em; margin-top: 4px; }
+    .stock-label.low { color: #f0a070; }
+
+    .card-body { padding: 14px 16px 16px; flex: 1; display: flex; flex-direction: column; background: #ffffff; }
+    .card-rating { display: flex; align-items: center; gap: 5px; margin-bottom: 6px; }
+    .card-stars { color: var(--gold); font-size: 11px; letter-spacing: 1px; }
+    .card-review-count { font-size: 11px; color: var(--muted); }
+    .card-body h3 { margin: 0; font-size: 14.5px; letter-spacing: -0.02em; line-height: 1.35; font-family: var(--font-display); font-weight: 700; color: #111111; }
+    .card-body p { margin: 6px 0 0; color: var(--muted); font-size: 12.5px; line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; flex: 1; }
+    .card-foot { display: flex; align-items: center; justify-content: space-between; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line); background: #fafafa; margin: 12px -16px -16px; padding: 10px 16px; border-radius: 0 0 16px 16px; }
+    .price { font-weight: 800; font-size: 15px; font-family: var(--font-display); letter-spacing: -0.03em; background: #fff7e6; color: var(--gold); padding: 4px 10px; border-radius: 8px; border: 1.5px solid rgba(200,134,10,0.2); display: inline-block; }
+    .old-price { color: var(--muted); font-size: 12px; text-decoration: line-through; margin-top: 2px; }
+    .card-arrow { color: var(--gold); font-weight: 600; font-size: 12px; display: flex; align-items: center; gap: 4px; font-family: var(--font-display); transition: transform 0.2s ease; }
+
+    /* ── URGENCY BANNER ── */
+    .urgency-banner { background: #fffbeb; border: 1px solid rgba(255,215,0,0.3); border-radius: 16px; padding: 14px 20px; display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+    .urgency-icon { font-size: 20px; flex-shrink: 0; }
+    .urgency-text { font-size: 13.5px; color: var(--muted); line-height: 1.5; }
+    .urgency-text strong { color: var(--gold); font-family: var(--font-display); }
+    .urgency-countdown { font-family: var(--font-display); font-weight: 800; font-size: 18px; color: var(--gold); letter-spacing: -0.02em; white-space: nowrap; margin-left: auto; flex-shrink: 0; }
+
+    /* ── REVIEWS SECTION ── */
+    .reviews-section { padding-bottom: 60px; }
+    .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 24px; }
+    .review-card { padding: 20px; border-radius: 20px; background: #f6f6f6; border: 1px solid var(--line); display: flex; flex-direction: column; gap: 10px; }
+    .review-top { display: flex; align-items: center; justify-content: space-between; }
+    .reviewer { display: flex; align-items: center; gap: 10px; }
+    .reviewer-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--gold-dim); border: 1px solid rgba(199,162,122,0.25); display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; }
+    .reviewer-name { font-weight: 600; font-size: 13.5px; font-family: var(--font-display); }
+    .reviewer-city { font-size: 11.5px; color: var(--muted); margin-top: 1px; }
+    .review-stars { color: var(--gold); font-size: 12px; letter-spacing: 1px; }
+    .review-text { font-size: 13.5px; color: var(--muted); line-height: 1.7; }
+    .review-product { font-size: 11px; color: rgba(199,162,122,0.7); font-family: var(--font-display); font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
+    .review-verified { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; color: var(--green); font-weight: 600; }
+
+    /* ── TRUST STRIP ── */
+    .strip { padding: 0 0 64px; }
+    .strip-inner { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .info { padding: 22px; border-radius: 20px; background: #f6f6f6; border: 1px solid var(--line); display: flex; gap: 14px; align-items: flex-start; transition: border-color 0.2s; }
+    .info:hover { border-color: rgba(199,162,122,0.2); }
+    .info-icon { font-size: 20px; width: 42px; height: 42px; border-radius: 12px; background: var(--gold-dim); border: 1px solid rgba(199,162,122,0.18); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .info-text h4 { margin: 0 0 5px; font-size: 14.5px; letter-spacing: -0.02em; font-family: var(--font-display); font-weight: 700; }
+    .info-text p { margin: 0; color: var(--muted); line-height: 1.7; font-size: 13px; }
+
+    /* ── FOOTER ── */
+    .footer { border-top: 1px solid var(--line); padding: 32px 0; position: relative; z-index: 1; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    .footer-brand { font-family: var(--font-display); font-weight: 700; font-size: 15px; color: var(--text); letter-spacing: -0.03em; }
+    .footer-brand span { color: var(--gold); }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { color: var(--muted); font-size: 13px; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text); }
+    .footer-copy { color: var(--muted); font-size: 12px; }
+
+    /* ── WHATSAPP FLOAT ── */
+    .wa-float { position: fixed; bottom: 24px; right: 24px; z-index: 200; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
+    .wa-bubble { background: #25D366; color: #fff; width: 58px; height: 58px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 28px rgba(37,211,102,0.4); cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease; border: none; }
+    .wa-bubble:hover { transform: scale(1.08); box-shadow: 0 8px 36px rgba(37,211,102,0.55); }
+    .wa-bubble svg { width: 28px; height: 28px; fill: #fff; }
+    .wa-label { background: rgba(255,255,255,0.97); border: 1px solid var(--line); color: var(--text); font-size: 12.5px; font-weight: 600; padding: 8px 14px; border-radius: var(--radius-pill); white-space: nowrap; font-family: var(--font-display); opacity: 0; transform: translateX(8px); transition: opacity 0.2s, transform 0.2s; pointer-events: none; }
+    .wa-float:hover .wa-label { opacity: 1; transform: translateX(0); }
+    .wa-ping { position: absolute; top: 0; right: 0; width: 14px; height: 14px; background: #ff4444; border-radius: 50%; border: 2px solid var(--bg); animation: wa-ping 1.8s ease-in-out infinite; }
+    @keyframes wa-ping { 0%,100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.3); opacity: 0.7; } }
+
+    /* ── OVERLAY ── */
+    .overlay { position: fixed; inset: 0; background: rgba(6,5,4,0.6); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); z-index: 80; opacity: 0; pointer-events: none; transition: opacity 0.35s ease; }
+    .overlay.show { opacity: 1; pointer-events: all; }
+
+    /* ── DRAWER ── */
+    .modal { position: fixed; top: 0; right: 0; width: min(100%, 860px); height: 100vh; overflow-y: auto; z-index: 90; background: #ffffff; min-height: 100%; box-shadow: -4px 0 80px rgba(0,0,0,0.6); border-left: 1px solid var(--line); transform: translateX(100%); transition: transform 0.42s cubic-bezier(0.32,0,0.15,1); display: block; border-radius: 0; }
+    .modal.show { transform: translateX(0); }
+
+    .modal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; min-height: 100vh; }
+    .modal-gallery { padding: 22px; border-right: 1px solid var(--line); }
+    .gallery-main { background: #f8f6f3; border-radius: 18px; overflow: hidden; position: relative; aspect-ratio: 3/4; width: 100%; }
+    .gallery-main img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; transition: opacity 0.2s ease; }
+    .thumbs { display: grid; grid-template-columns: repeat(6,1fr); gap: 7px; margin-top: 10px; }
+    .thumb { border: 1.5px solid var(--line); border-radius: 8px; overflow: hidden; cursor: pointer; background: #ffffff; aspect-ratio: 3/4; width: 100%; position: relative; transition: border-color 0.2s, transform 0.15s; }
+    .thumb:hover { border-color: rgba(199,162,122,0.8); transform: scale(1.05); }
+    .thumb.active { border: 2px solid var(--gold); }
+    .thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .modal-side { padding: 26px; display: flex; flex-direction: column; overflow-y: auto; }
+    .modal-top { position: sticky; top: 0; background: #ffffff; z-index: 10; padding: 14px 0 10px; display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; }
+    .modal-eyebrow { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: var(--radius-pill); border: 1px solid var(--line); font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); font-weight: 700; font-family: var(--font-display); }
+    .modal-eyebrow.promo { border-color: var(--gold); color: var(--gold); background: var(--gold-dim); }
+    .modal h3 { margin: 14px 0 0; font-size: clamp(20px, 2.5vw, 32px); line-height: 1.05; letter-spacing: -0.05em; font-family: var(--font-display); font-weight: 800; }
+
+    /* rating in modal */
+    .modal-rating { display: flex; align-items: center; gap: 8px; margin-top: 10px; }
+    .modal-stars { color: var(--gold); font-size: 14px; letter-spacing: 1px; }
+    .modal-rating-text { font-size: 13px; color: var(--muted); }
+    .modal-rating-text strong { color: var(--text); }
+
+    .modal-pricing { margin-top: 14px; display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+    .modal-price { font-size: 30px; font-weight: 800; font-family: var(--font-display); letter-spacing: -0.04em; }
+    .modal-compare { color: var(--muted); font-size: 16px; text-decoration: line-through; }
+    .savings-badge { padding: 4px 10px; border-radius: var(--radius-pill); background: rgba(100,210,130,0.12); border: 1px solid rgba(100,210,130,0.25); color: var(--green); font-size: 11.5px; font-weight: 700; font-family: var(--font-display); }
+    .modal-deal { color: var(--gold); font-size: 13px; margin-top: 6px; font-weight: 600; }
+    .modal-divider { height: 1px; background: var(--line); margin: 16px 0; }
+    .modal-desc { color: var(--muted); line-height: 1.8; font-size: 14px; margin: 0; }
+
+    /* urgency in modal */
+    .modal-urgency { display: flex; align-items: center; gap: 10px; padding: 11px 14px; border-radius: 13px; background: rgba(240,160,112,0.08); border: 1px solid rgba(240,160,112,0.2); margin-top: 16px; }
+    .modal-urgency-icon { font-size: 16px; }
+    .modal-urgency-text { font-size: 12.5px; color: #f0a070; font-weight: 600; font-family: var(--font-display); }
+    .modal-viewers { display: flex; align-items: center; gap: 8px; margin-top: 10px; font-size: 12px; color: var(--muted); }
+    .viewer-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); animation: pulse-dot 1.5s ease-in-out infinite; }
+
+    .meta { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; margin-top: 16px; }
+    .meta-box { padding: 13px; border-radius: 13px; background: rgba(255,255,255,0.04); border: 1px solid var(--line); display: flex; gap: 10px; align-items: flex-start; }
+    .meta-icon { font-size: 17px; line-height: 1; margin-top: 1px; }
+    .meta-box strong { display: block; margin-bottom: 3px; font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); font-family: var(--font-display); font-weight: 700; }
+    .meta-box span { font-size: 12px; line-height: 1.5; color: var(--text); }
+
+    /* modal reviews */
+    .modal-reviews { margin-top: 18px; }
+    .modal-reviews-title { font-size: 12px; font-weight: 700; font-family: var(--font-display); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+    .mini-review { padding: 12px; border-radius: 12px; background: #f6f6f6; border: 1px solid var(--line); margin-bottom: 8px; }
+    .mini-review-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+    .mini-reviewer { font-size: 12.5px; font-weight: 600; font-family: var(--font-display); }
+    .mini-stars { color: var(--gold); font-size: 10px; letter-spacing: 1px; }
+    .mini-review-text { font-size: 12.5px; color: var(--muted); line-height: 1.6; }
+
+    .modal-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+    .modal-actions .pill { flex: 1; min-width: 140px; justify-content: center; }
+    .close-btn { width: 40px; height: 40px; border-radius: 999px; background: #f0f0f0; border: 1px solid var(--line); font-size: 17px; color: var(--muted); flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+    .close-btn:hover { background: #e0e0e0; color: var(--text); }
+
+    /* ── ORDER DRAWER ── */
+    .order-panel { width: min(100%, 520px); display: flex; flex-direction: column; background: #ffffff; }
+    .order-head { padding: 14px 20px 12px; border-bottom: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+    .order-head-text h3 { margin: 0; font-size: 16px; letter-spacing: -0.02em; font-family: var(--font-display); font-weight: 800; }
+    .order-head-text p { margin: 2px 0 0; color: var(--muted); font-size: 11px; }
+    .form { padding: 14px 20px 20px; display: flex; flex-direction: column; gap: 11px; }
+    .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
+    label { display: grid; gap: 6px; font-size: 12px; font-weight: 600; color: var(--muted); font-family: var(--font-display); letter-spacing: 0.03em; text-transform: uppercase; }
+    input, textarea { width: 100%; padding: 12px 15px; border-radius: 12px; border: 1.5px solid rgba(0,0,0,0.15); background: #ffffff; color: var(--text); outline: none; font-size: 14px; transition: border-color 0.2s, box-shadow 0.2s; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+    input:focus, textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(255,215,0,0.15); }
+    textarea { min-height: 80px; resize: vertical; }
+    select { width: 100%; padding: 12px 15px; border-radius: 12px; border: 1.5px solid rgba(0,0,0,0.15); background: #ffffff; color: var(--text); outline: none; font-size: 14px; transition: border-color 0.2s, box-shadow 0.2s; box-shadow: 0 1px 3px rgba(0,0,0,0.06); appearance: none; cursor: pointer; }
+    select:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(200,134,10,0.15); }
+
+    input[readonly] { opacity: 0.55; cursor: default; }
+    .payment-note { padding: 13px 15px; border-radius: 12px; background: #fffbeb; border: 1px solid rgba(255,215,0,0.3); color: var(--muted); font-size: 13px; display: flex; align-items: flex-start; gap: 10px; }
+    .payment-note strong { color: var(--gold); }
+    .form-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
+    .form-actions .pill { flex: 1; justify-content: center; min-width: 120px; }
+
+    /* whatsapp send button */
+    .pill.wa { background: #25D366; color: #fff; border-color: #25D366; font-weight: 700; }
+    .pill.wa:hover { background: #20c05a; box-shadow: 0 4px 20px rgba(37,211,102,0.35); transform: translateY(-1px); }
+
+    .success-msg { display: none; margin: 0 26px 26px; padding: 16px 18px; border-radius: 13px; background: var(--green-dim); border: 1px solid rgba(125,217,163,0.25); color: var(--green); font-weight: 600; font-size: 14px; font-family: var(--font-display); gap: 10px; align-items: center; line-height: 1.5; }
+    .success-msg.show { display: flex; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1100px) {
+      .grid { grid-template-columns: repeat(2,1fr); }
+      .hero { grid-template-columns: 1fr; gap: 24px; }
+      .strip-inner { grid-template-columns: 1fr; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .modal-grid { grid-template-columns: 1fr; }
+      .modal-gallery { border-right: none; border-bottom: 1px solid var(--line); }
+    }
+    @media (max-width: 720px) {
+      .nav { border-radius: 20px; top: 8px; }
+      .stats, .row2, .meta { grid-template-columns: 1fr; }
+      .grid { grid-template-columns: repeat(2,1fr); gap: 12px; }
+      .modal { width: 100%; }
+      .modal-gallery, .modal-side, .order-head, .form { padding-left: 16px; padding-right: 16px; }
+      h1 { letter-spacing: -0.04em; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .wa-float { bottom: 16px; right: 16px; }
+    }
+    @media (max-width: 480px) {
+      .grid { grid-template-columns: 1fr; }
+      .hero-actions { flex-direction: column; }
+      .nav-actions .pill:first-child { display: none; }
+      .footer-inner { flex-direction: column; text-align: center; }
+      .footer-links { justify-content: center; }
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fade-up { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+    .hero-left > * { animation: fade-up 0.55s ease both; }
+    .hero-left > *:nth-child(1) { animation-delay: 0.05s; }
+    .hero-left > *:nth-child(2) { animation-delay: 0.12s; }
+    .hero-left > *:nth-child(3) { animation-delay: 0.19s; }
+    .hero-left > *:nth-child(4) { animation-delay: 0.26s; }
+    .hero-left > *:nth-child(5) { animation-delay: 0.32s; }
+    .hero-card { animation: fade-up 0.55s 0.18s ease both; }
+    .card { animation: fade-up 0.45s ease both; }
+    .card:nth-child(1) { animation-delay: 0.05s; }
+    .card:nth-child(2) { animation-delay: 0.12s; }
+    .card:nth-child(3) { animation-delay: 0.19s; }
+    .card:nth-child(4) { animation-delay: 0.26s; }
+      
+    /* Dropdown arrow styling */
+    .form select {
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23c8860a' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      padding-right: 36px;
+      border: 1.5px solid var(--gold) !important;
+      background-color: #fffdf8;
+    }
+    .form select:focus {
+      border-color: var(--gold) !important;
+      box-shadow: 0 0 0 3px rgba(200,134,10,0.15);
+    }
+  </style>
+  <!-- Google Analytics - Replace GA_MEASUREMENT_ID with your ID -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'GA_MEASUREMENT_ID');
+  </script> -->
+</head>
+<body>
+
+  <!-- TICKER -->
+  <div class="ticker">
+    <div class="ticker-track">
+      Paiement à la livraison partout au Maroc <span class="ticker-dot">✦</span>
+      Commande simple & rapide <span class="ticker-dot">✦</span>
+      +340 commandes livrées ce mois <span class="ticker-dot">✦</span>
+      Produits sélectionnés avec soin <span class="ticker-dot">✦</span>
+      الدفع عند الاستلام <span class="ticker-dot">✦</span>
+      Paiement à la livraison partout au Maroc <span class="ticker-dot">✦</span>
+      Commande simple & rapide <span class="ticker-dot">✦</span>
+      +340 commandes livrées ce mois <span class="ticker-dot">✦</span>
+      Produits sélectionnés avec soin <span class="ticker-dot">✦</span>
+      الدفع عند الاستلام <span class="ticker-dot">✦</span>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="brand"><span class="brand-dot"></span><span class="brand-label"><span style="color:var(--text)">Foundb</span><span style="color:var(--gold)">yassine</span></span></div>
+    <div class="nav-actions">
+      <a class="pill" href="#products">Nos produits</a>
+      <button class="pill gold" id="navOrderBtn">Commander →</button>
+    </div>
+  </nav>
+
+  <main class="wrap">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-left">
+        <span class="eyebrow">🇲🇦 COD Store · Maroc · متجر مغربي</span>
+        <h1>Des produits qui <em>changent</em><br>votre quotidien.</h1>
+        <p class="hero-sub">Produits utiles, sélectionnés avec soin. Livraison partout au Maroc, vous payez à la réception. <span style="font-size:13px;color:var(--muted);display:block;margin-top:4px;direction:rtl">متوفر في جميع أنحاء المغرب 🇲🇦</span></p>
+        <div class="hero-actions">
+          <a class="pill gold" href="#products">Voir les produits</a>
+          <button class="pill" id="heroOrderBtn">Commander maintenant</button>
+        </div>
+        <div class="hero-proof">
+          <div class="proof-avatars">
+            <span>👨</span><span>👩</span><span>👦</span><span>👩‍🦱</span>
+          </div>
+          <div class="proof-text">
+            <div class="stars-sm">★★★★★</div>
+            <div><strong>+340 clients</strong> satisfaits ce mois au Maroc</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <div class="hero-card-label">Pourquoi nous choisir</div>
+        <div class="stats">
+          <div class="stat"><strong>340+</strong><span>commandes ce mois</span></div>
+          <div class="stat"><strong>4.8★</strong><span>note moyenne</span></div>
+          <div class="stat"><strong>COD</strong><span>payez à réception<br>الدفع عند الاستلام</span></div>
+        </div>
+        <div class="divider"></div>
+        <div class="trust-row">
+          <div class="trust-item">
+            <div class="trust-icon">🚚</div>
+            <div><strong>Livraison rapide</strong><span>Partout au Maroc · توصيل سريع</span></div>
+          </div>
+          <div class="trust-item">
+            <div class="trust-icon">✅</div>
+            <div><strong>Commande simple</strong><span>Formulaire rapide · طلب سهل</span></div>
+          </div>
+          <div class="trust-item">
+            <div class="trust-icon">🎯</div>
+            <div><strong>Produits testés</strong><span>Sélectionnés pour leur qualité · منتجات مضمونة</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- URGENCY BANNER -->
+    <div class="urgency-banner">
+      <div class="urgency-icon">⚡</div>
+      <div class="urgency-text"><strong>Offre limitée :</strong> Les prix de lancement expirent bientôt. Commandez avant la fin du stock.</div>
+      <div class="urgency-countdown" id="countdown">23:47:12</div>
+    </div>
+
+    <!-- PRODUCTS -->
+    <section class="section-head" id="products">
+      <span class="eyebrow">Boutique</span>
+      <h2>Notre sélection · <span style="font-size:0.75em;color:var(--gold)">منتجاتنا</span></h2>
+      <p>Des produits utiles pour la maison et le quotidien, avec paiement à la livraison partout au Maroc.</p>
+    </section>
+
+    <section class="grid">
+
+      <article class="card" onclick="openProduct('shower-head')">
+        <div class="card-media">
+          <span class="badge promo">🔥 Prix lancement</span>
+          <img src="images/shower-head-1.jpg" alt="Pommeau de Douche Spa 2-en-1" loading="lazy" />
+          <div class="stock-bar">
+            <div class="stock-track"><div class="stock-fill" style="width:28%"></div></div>
+            <div class="stock-label low">⚠ Stock faible — 7 restants</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-rating"><span class="card-stars">★★★★★</span><span class="card-review-count">(84 avis)</span></div>
+          <h3>Pommeau de Douche Spa 2-en-1</h3>
+          <p>Jet haute pression + massage silicone relaxant. Installation en moins d'une minute.</p>
+          <div class="card-foot">
+            <div><div class="price">109 DH</div><div class="old-price">199 DH</div></div>
+            <span class="card-arrow">Voir →</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" onclick="openProduct('mandoline')">
+        <div class="card-media">
+          <span class="badge promo">✂️ -55%</span>
+          <img src="images/mandoline-1.png" alt="Mandoline Pro V-Blade" loading="lazy" />
+          <div class="stock-bar">
+            <div class="stock-track"><div class="stock-fill" style="width:45%"></div></div>
+            <div class="stock-label">Stock disponible</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-rating"><span class="card-stars">★★★★★</span><span class="card-review-count">(61 avis)</span></div>
+          <h3>Mandoline Pro V-Blade</h3>
+          <p>Lame en V ultra-affûtée, 3-en-1 : tranches lisses, juliennes fines ou râpe précise.</p>
+          <div class="card-foot">
+            <div><div class="price">80 DH</div><div class="old-price">179 DH</div></div>
+            <span class="card-arrow">Voir →</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" onclick="openProduct('shoe-rack')">
+        <div class="card-media">
+          <span class="badge">🏠 Maison</span>
+          <img src="images/shoe-rack-1.png" alt="Range-chaussures pliable" loading="lazy" />
+          <div class="stock-bar">
+            <div class="stock-track"><div class="stock-fill" style="width:60%"></div></div>
+            <div class="stock-label">Stock disponible</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-rating"><span class="card-stars">★★★★☆</span><span class="card-review-count">(29 avis)</span></div>
+          <h3>Range-chaussures pliable</h3>
+          <p>Solution compacte pour garder l'entrée ou le dressing parfaitement organisé.</p>
+          <div class="card-foot">
+            <div><div class="price">149 DH</div><div class="old-price">249 DH</div></div>
+            <span class="card-arrow">Voir →</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" onclick="openProduct('safe')">
+        <div class="card-media">
+          <span class="badge">🔒 Sécurité</span>
+          <img src="images/safe-1.png" alt="Coffre-fort sécurisé" loading="lazy" />
+          <div class="stock-bar">
+            <div class="stock-track"><div class="stock-fill" style="width:70%"></div></div>
+            <div class="stock-label">Stock disponible</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-rating"><span class="card-stars">★★★★★</span><span class="card-review-count">(18 avis)</span></div>
+          <h3>Coffre-fort sécurisé</h3>
+          <p>Protégez vos objets importants avec ce coffre compact et fiable.</p>
+          <div class="card-foot">
+            <div><div class="price">199 DH</div><div class="old-price">299 DH</div></div>
+            <span class="card-arrow">Voir →</span>
+          </div>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- REVIEWS -->
+    <section class="reviews-section section-head">
+      <span class="eyebrow">⭐ Avis clients</span>
+      <h2>Ce que disent nos clients · <span style="font-size:0.75em;color:var(--gold)">آراء الزبائن</span></h2>
+      <p>Des vraies personnes, partout au Maroc, qui ont commandé et reçu leurs produits.</p>
+      <div class="reviews-grid">
+
+        <div class="review-card">
+          <div class="review-top">
+            <div class="reviewer">
+              <div class="reviewer-avatar">👩</div>
+              <div><div class="reviewer-name">Khadija B.</div><div class="reviewer-city">📍 Casablanca</div></div>
+            </div>
+            <div class="review-stars">★★★★★</div>
+          </div>
+          <div class="review-text">"Le pommeau est incroyable, j'ai l'impression d'être dans un spa chaque matin. Installation en 2 minutes, aucun problème. Très contente de mon achat !"</div>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-top:4px">
+            <div class="review-product">Pommeau de Douche Spa</div>
+            <div class="review-verified">✓ Achat vérifié</div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-top">
+            <div class="reviewer">
+              <div class="reviewer-avatar">👨</div>
+              <div><div class="reviewer-name">Youssef A.</div><div class="reviewer-city">📍 Rabat</div></div>
+            </div>
+            <div class="review-stars">★★★★★</div>
+          </div>
+          <div class="review-text">"La mandoline est top ! Je coupe mes légumes 3x plus vite maintenant. Qualité solide, la lame est vraiment bien affûtée. Livraison rapide à Rabat, je recommande."</div>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-top:4px">
+            <div class="review-product">Mandoline Pro V-Blade</div>
+            <div class="review-verified">✓ Achat vérifié</div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-top">
+            <div class="reviewer">
+              <div class="reviewer-avatar">👩‍🦱</div>
+              <div><div class="reviewer-name">Nadia M.</div><div class="reviewer-city">📍 Marrakech</div></div>
+            </div>
+            <div class="review-stars">★★★★★</div>
+          </div>
+          <div class="review-text">"Le range-chaussures est exactement ce qu'il me fallait. Bien solide, facile à monter, et mon entrée est enfin propre ! Merci Foundbyassine, je vais recommander d'autres produits."</div>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-top:4px">
+            <div class="review-product">Range-chaussures pliable</div>
+            <div class="review-verified">✓ Achat vérifié</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TRUST STRIP -->
+    <section class="strip" style="padding-top:48px">
+      <div class="strip-inner">
+        <div class="info">
+          <div class="info-icon">🎁</div>
+          <div class="info-text"><h4>Sélection soignée</h4><p>Chaque produit est testé avant d'être mis en vente. On ne vend pas n'importe quoi.</p></div>
+        </div>
+        <div class="info">
+          <div class="info-icon">📋</div>
+          <div class="info-text"><h4>Commande simple</h4><p>Remplissez le formulaire ou écrivez sur WhatsApp. On confirme votre commande rapidement.</p></div>
+        </div>
+        <div class="info">
+          <div class="info-icon">🚚</div>
+          <div class="info-text"><h4>Paiement à la livraison · <span style="color:var(--gold)">الدفع عند الاستلام</span></h4><p>Vous payez uniquement quand vous recevez votre colis. Aucun risque, aucun paiement en avance.</p></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-inner">
+        <div class="footer-brand">Foundby<span>yassine</span></div>
+        <div class="footer-links">
+          <a href="#products">Produits</a>
+          <a href="https://wa.me/212619005501" target="_blank">WhatsApp</a>
+        </div>
+        <div class="footer-copy">© 2026 Foundbyassine · Paiement à la livraison · الدفع عند الاستلام · Maroc</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WHATSAPP FLOAT -->
+  <div class="wa-float">
+    <div class="wa-label">Commandez sur WhatsApp</div>
+    <button class="wa-bubble" onclick="window.open('https://wa.me/212619005501?text=Bonjour, je voudrais commander un produit Foundbyassine.','_blank')">
+      <div class="wa-ping"></div>
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </button>
+  </div>
+
+  <div class="overlay" id="overlay"></div>
+
+  <!-- PRODUCT DRAWER -->
+  <div class="modal" id="productModal">
+    <div class="modal-grid">
+      <div class="modal-gallery">
+        <div class="gallery-main"><img id="mainImage" src="" alt="" /></div>
+        <div class="thumbs" id="thumbsContainer"></div>
+      </div>
+      <div class="modal-side">
+        <div class="modal-top">
+          <span class="modal-eyebrow" id="modalBadge"></span>
+          <button class="close-btn" id="closeProduct">✕</button>
+        </div>
+        <h3 id="modalTitle"></h3>
+        <div class="modal-rating">
+          <span class="modal-stars" id="modalStars">★★★★★</span>
+          <span class="modal-rating-text"><strong id="modalRatingScore">4.9</strong> · <span id="modalRatingCount">84 avis</span></span>
+        </div>
+        <div class="modal-pricing">
+          <div class="modal-price" id="modalPrice"></div>
+          <div class="modal-compare" id="modalCompare"></div>
+          <span class="savings-badge" id="savingsBadge" style="display:none"></span>
+        </div>
+        <div class="modal-deal" id="modalDeal"></div>
+
+        <div class="modal-urgency" id="modalUrgency">
+          <div class="modal-urgency-icon">⚡</div>
+          <div class="modal-urgency-text" id="modalUrgencyText">Stock limité — commandez avant rupture !</div>
+        </div>
+        <div class="modal-viewers"><div class="viewer-dot"></div><span id="modalViewers">12 personnes regardent ce produit en ce moment</span></div>
+
+        <div class="modal-divider"></div>
+        <p class="modal-desc" id="modalDesc"></p>
+
+        <div class="meta">
+          <div class="meta-box"><div class="meta-icon">🚚</div><div><strong>Livraison</strong><span id="modalCod"></span></div></div>
+          <div class="meta-box"><div class="meta-icon">💳</div><div><strong>Paiement</strong><span>À la livraison (COD)</span></div></div>
+        </div>
+
+        <div class="modal-reviews">
+          <div class="modal-reviews-title">Avis récents</div>
+          <div id="modalReviewsContainer"></div>
+        </div>
+
+        <div class="modal-actions">
+          <button class="pill gold" id="orderFromProduct">Commander ce produit</button>
+          <button class="pill" id="closeProductSecondary">Retour</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ORDER DRAWER -->
+  <div class="modal order-panel" id="orderModal">
+    <div class="order-head">
+      <div class="order-head-text">
+        <h3>Confirmer la commande</h3>
+        <p>Remplissez le formulaire — on vous rappelle pour confirmer. <span style="direction:rtl;display:inline-block;font-size:12px;color:var(--muted)">سنتصل بكم للتأكيد</span></p>
+      </div>
+      <button class="close-btn" id="closeOrder">✕</button>
+    </div>
+    <div class="form" id="orderForm">
+      <label>Produit
+        <select id="orderProduct" name="product">
+          <option value="">Choisir un produit...</option>
+          <option value="Pommeau de Douche Spa 2-en-1">Pommeau de Douche Spa 2-en-1 — 109 DH</option>
+          <option value="Mandoline Pro V-Blade">Mandoline Pro V-Blade — 80 DH</option>
+          <option value="Range-chaussures pliable">Range-chaussures pliable — 149 DH</option>
+          <option value="Coffre-fort sécurisé">Coffre-fort sécurisé — 199 DH</option>
+        </select>
+      </label>
+      <div class="row2">
+        <label>Nom complet<input id="fullName" name="name" type="text" placeholder="Votre nom" /></label>
+        <label>Téléphone<input id="phone" name="phone" type="tel" placeholder="06 XX XX XX XX" /></label>
+      </div>
+      <label>Quantité
+        <select id="orderQty" name="quantity">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </label>
+      <div class="row2">
+        <label>Ville
+          <select id="city" name="city">
+            <option value="">Choisir une ville...</option>
+            <option>Casablanca</option>
+            <option>Rabat</option>
+            <option>Marrakech</option>
+            <option>Fès</option>
+            <option>Tanger</option>
+            <option>Agadir</option>
+            <option>Meknès</option>
+            <option>Oujda</option>
+            <option>Kénitra</option>
+            <option>Tétouan</option>
+            <option>Safi</option>
+            <option>Mohammedia</option>
+            <option>El Jadida</option>
+            <option>Béni Mellal</option>
+            <option>Nador</option>
+            <option>Settat</option>
+            <option>Laâyoune</option>
+            <option>Autre</option>
+          </select>
+        </label>
+        <label>Adresse<input id="address" name="address" type="text" placeholder="Rue, quartier..." /></label>
+      </div>
+      <div class="payment-note">💳 <div><strong>Paiement à la livraison</strong> — vous payez uniquement à réception de votre colis.</div></div>
+      <div class="form-actions">
+        <button class="pill gold" id="submitOrder">✓ Confirmer la commande</button>
+        <button class="pill" id="cancelOrder">Annuler</button>
+      </div>
+    </div>
+    <div class="success-msg" id="successMsg">
+      ✅ Commande confirmée ! On vous contactera très bientôt pour confirmer la livraison. Merci ! <span style="display:block;margin-top:6px;direction:rtl;font-size:13px">شكراً على ثقتكم 🙏</span>
+    </div>
+  </div>
+
+  <script>
+    // ── Replace with your real WhatsApp number ──
+    var WA_NUMBER = '212619005501';
+
+    var PRODUCTS = {
+      'shower-head': {
+        badge: 'Prix lancement', badgePromo: true,
+        title: 'Pommeau de Douche Spa 2-en-1',
+        price: '109 DH', compare: '199 DH',
+        deal: '🔥 Prix spécial : -45% ce weekend seulement. Stock limité à 7 unités.',
+        desc: "Transformez chaque douche en un moment de bien-être avec un jet haute pression, un massage silicone relaxant, un bouton Stop éco-intelligent et une installation rapide en moins d'une minute.",
+        cod: 'Partout au Maroc, paiement à réception.',
+        urgency: '⚠ Stock faible — seulement 7 unités à 109 DH. Après : prix normal 199 DH.',
+        viewers: 14,
+        rating: '4.9', ratingCount: '84 avis', stars: '★★★★★',
+        reviews: [
+          { name: 'Khadija B.', city: 'Casablanca', stars: '★★★★★', text: "Incroyable ! J'ai l'impression d'être dans un spa chaque matin." },
+          { name: 'Omar T.', city: 'Agadir', stars: '★★★★★', text: "Installation en 2 min, jet puissant. Mon meilleur achat cette année." }
+        ],
+        images: ['images/shower-head-1.jpg','images/shower-head-2.png','images/shower-head-3.png','images/shower-head-4.png','images/shower-head-5.jpg','images/shower-head-6.png']
+      },
+      'mandoline': {
+        badge: 'OFFRE SPÉCIALE -55%', badgePromo: true,
+        title: 'Mandoline Pro V-Blade',
+        price: '80 DH', compare: '179 DH',
+        deal: 'Offre spéciale : un indispensable cuisine à prix réduit.',
+        desc: 'Lame en V ultra-affûtée pour trancher sans effort. 3-en-1 : tranches lisses, juliennes fines ou râpe précise. Sécurité garantie avec poussoir ergonomique. Lames en acier inoxydable pour une durabilité maximale.',
+        cod: 'Partout au Maroc, paiement à réception.',
+        urgency: 'Offre -55% limitée dans le temps.',
+        viewers: 8,
+        rating: '4.8', ratingCount: '61 avis', stars: '★★★★★',
+        reviews: [
+          { name: 'Youssef A.', city: 'Rabat', stars: '★★★★★', text: "Je coupe mes légumes 3x plus vite. Lame vraiment affûtée, livraison rapide." },
+          { name: 'Salma K.', city: 'Fès', stars: '★★★★★', text: "Parfait pour la cuisine. Poussoir de sécurité bien pensé, je recommande !" }
+        ],
+        images: ['images/mandoline-1.png','images/mandoline-2.png','images/mandoline-3.png','images/mandoline-4.png']
+      },
+      'shoe-rack': {
+        badge: 'Maison', badgePromo: false,
+        title: 'Range-chaussures pliable',
+        price: '149 DH', compare: '249 DH',
+        deal: '', desc: "Solution de rangement propre et compacte pour garder l'entrée ou le dressing mieux organisé.",
+        cod: 'Partout au Maroc, paiement à réception.',
+        urgency: 'Produit populaire ce mois-ci.',
+        viewers: 5,
+        rating: '4.6', ratingCount: '29 avis', stars: '★★★★☆',
+        reviews: [
+          { name: 'Nadia M.', city: 'Marrakech', stars: '★★★★★', text: "Mon entrée est enfin propre et organisée. Facile à monter, très solide." }
+        ],
+        images: ['images/shoe-rack-1.png','images/shoe-rack-2.png','images/shoe-rack-3.png','images/shoe-rack-4.png']
+      },
+      'safe': {
+        badge: 'Sécurité', badgePromo: false,
+        title: 'Coffre-fort sécurisé',
+        price: '199 DH', compare: '299 DH',
+        deal: '', desc: 'Petit coffre pratique pour protéger les objets importants avec une présentation simple et sérieuse.',
+        cod: 'Partout au Maroc, paiement à réception.',
+        urgency: 'Produit apprécié pour la maison.',
+        viewers: 3,
+        rating: '4.9', ratingCount: '18 avis', stars: '★★★★★',
+        reviews: [
+          { name: 'Hassan R.', city: 'Tanger', stars: '★★★★★', text: "Solide et discret. Parfait pour ranger les documents importants à la maison." }
+        ],
+        images: ['images/safe-1.png','images/safe-2.png','images/safe-3.png','images/safe-4.png']
+      }
+    };
+
+    var currentProduct = null;
+
+    // ── Countdown timer ──
+    function startCountdown() {
+      var end = Date.now() + (23 * 3600 + 47 * 60 + 12) * 1000;
+      var saved = localStorage.getItem('cdEnd');
+      if (saved && parseInt(saved) > Date.now()) { end = parseInt(saved); } else { localStorage.setItem('cdEnd', end); }
+      setInterval(function() {
+        var diff = Math.max(0, end - Date.now());
+        var h = Math.floor(diff / 3600000);
+        var m = Math.floor((diff % 3600000) / 60000);
+        var s = Math.floor((diff % 60000) / 1000);
+        document.getElementById('countdown').textContent =
+          String(h).padStart(2,'0') + ':' + String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+      }, 1000);
+    }
+    startCountdown();
+
+    function openOverlay() { document.getElementById('overlay').classList.add('show'); document.body.classList.add('modal-open'); }
+
+    function closeAll() {
+      document.getElementById('overlay').classList.remove('show');
+      document.getElementById('productModal').classList.remove('show');
+      document.getElementById('orderModal').classList.remove('show');
+      document.body.classList.remove('modal-open');
+    }
+
+    function setThumb(index) {
+      var img = document.getElementById('mainImage');
+      img.style.opacity = '0';
+      setTimeout(function() { img.src = currentProduct.images[index]; img.style.opacity = '1'; }, 150);
+      document.querySelectorAll('.thumb').forEach(function(t, i) { t.classList.toggle('active', i === index); });
+    }
+
+    function calcSavings(price, compare) {
+      var p = parseInt(price), c = parseInt(compare);
+      if (!c || !p || c <= p) return null;
+      return '-' + Math.round((1 - p/c) * 100) + '%';
+    }
+
+    function openProduct(id) {
+      var p = PRODUCTS[id];
+      if (!p) return;
+      currentProduct = p;
+
+      var badge = document.getElementById('modalBadge');
+      badge.textContent = p.badge;
+      badge.className = 'modal-eyebrow' + (p.badgePromo ? ' promo' : '');
+
+      document.getElementById('modalTitle').textContent = p.title;
+      document.getElementById('modalPrice').textContent = p.price;
+      document.getElementById('modalCompare').textContent = p.compare;
+      document.getElementById('modalDeal').textContent = p.deal;
+      document.getElementById('modalDesc').textContent = p.desc;
+      document.getElementById('modalCod').textContent = p.cod;
+      document.getElementById('modalStars').textContent = p.stars;
+      document.getElementById('modalRatingScore').textContent = p.rating;
+      document.getElementById('modalRatingCount').textContent = p.ratingCount;
+      document.getElementById('modalUrgencyText').textContent = p.urgency;
+      document.getElementById('modalViewers').textContent = (p.viewers + Math.floor(Math.random()*4)) + ' personnes regardent ce produit en ce moment';
+      var sel = document.getElementById('orderProduct'); for(var i=0;i<sel.options.length;i++){if(sel.options[i].value===p.title){sel.selectedIndex=i;break;}}
+
+      var sv = calcSavings(p.price, p.compare);
+      var sb = document.getElementById('savingsBadge');
+      if (sv) { sb.textContent = sv + ' économisé'; sb.style.display = ''; } else { sb.style.display = 'none'; }
+
+      // reviews
+      var rhtml = '';
+      (p.reviews || []).forEach(function(r) {
+        rhtml += '<div class="mini-review"><div class="mini-review-top"><span class="mini-reviewer">' + r.name + ' · ' + r.city + '</span><span class="mini-stars">' + r.stars + '</span></div><div class="mini-review-text">' + r.text + '</div></div>';
+      });
+      document.getElementById('modalReviewsContainer').innerHTML = rhtml;
+
+      document.getElementById('mainImage').src = p.images[0];
+      document.getElementById('mainImage').alt = p.title;
+
+      var html = '';
+      for (var i = 0; i < p.images.length; i++) {
+        html += '<button class="thumb' + (i===0?' active':'') + '" data-i="' + i + '"><img src="' + p.images[i] + '" alt="" /></button>';
+      }
+      document.getElementById('thumbsContainer').innerHTML = html;
+      document.querySelectorAll('.thumb').forEach(function(btn) {
+        btn.addEventListener('click', function() { setThumb(parseInt(this.getAttribute('data-i'))); });
+      });
+
+      openOverlay();
+      positionModals();
+      document.getElementById('productModal').classList.add('show');
+      document.getElementById('orderModal').classList.remove('show');
+      document.getElementById('productModal').scrollTop = 0;
+    }
+
+    function positionModals() {
+      var navH = document.querySelector('.nav').getBoundingClientRect().bottom;
+      document.querySelectorAll('.modal').forEach(function(m) {
+        m.style.top = navH + 'px';
+        m.style.height = 'calc(100vh - ' + navH + 'px)';
+      });
+      var overlay = document.getElementById('overlay');
+      overlay.style.top = navH + 'px';
+      overlay.style.height = 'calc(100vh - ' + navH + 'px)';
+    }
+
+    function openOrder() {
+      positionModals();
+      if (currentProduct) { var sel = document.getElementById('orderProduct'); for(var i=0;i<sel.options.length;i++){if(sel.options[i].value===currentProduct.title){sel.selectedIndex=i;break;}} }
+      document.getElementById('successMsg').classList.remove('show');
+      openOverlay();
+      document.getElementById('orderModal').classList.add('show');
+      document.getElementById('productModal').classList.remove('show');
+      document.getElementById('orderModal').scrollTop = 0;
+    }
+
+    function buildWhatsAppMessage() {
+      var product = document.getElementById('orderProduct').value;
+      var name    = document.getElementById('fullName').value.trim();
+      var phone   = document.getElementById('phone').value.trim();
+      var city    = document.getElementById('city').value.trim();
+      var address = document.getElementById('address').value.trim();
+      var notes   = document.getElementById('notes').value.trim();
+      var msg = '🛍 *Nouvelle commande Foundbyassine*\n\n'
+        + '📦 *Produit :* ' + product + '\n'
+        + '👤 *Nom :* ' + (name || '—') + '\n'
+        + '📞 *Téléphone :* ' + (phone || '—') + '\n'
+        + '🏙 *Ville :* ' + (city || '—') + '\n'
+        + '📍 *Adresse :* ' + (address || '—') + '\n'
+        + (notes ? '📝 *Notes :* ' + notes + '\n' : '')
+        + '\n💳 _Paiement à la livraison (COD)_';
+      return encodeURIComponent(msg);
+    }
+
+    document.getElementById('submitOrder').addEventListener('click', function() {
+      var n = document.getElementById('fullName').value.trim();
+      var ph = document.getElementById('phone').value.trim();
+      var c = document.getElementById('city').value;
+      var a = document.getElementById('address').value.trim();
+      var product = document.getElementById('orderProduct').value;
+      var qty = document.getElementById('orderQty').value;
+      if (!n || !ph || !c || !a) { alert('Veuillez remplir tous les champs obligatoires.'); return; }
+
+      var btn = document.getElementById('submitOrder');
+      btn.textContent = 'Envoi en cours...';
+      btn.disabled = true;
+
+      // Get price based on product
+      var priceMap = {
+        'Pommeau de Douche Spa 2-en-1': '109',
+        'Mandoline Pro V-Blade': '80',
+        'Range-chaussures pliable': '149',
+        'Coffre-fort sécurisé': '199'
+      };
+      var price = priceMap[product] || '109';
+
+      fetch('https://yassinelakratte.app.n8n.cloud/webhook/cf4ba65b-b290-4152-91c8-2791aafe1f7c', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: n,
+          phone: ph,
+          city: c,
+          address: a,
+          product: product,
+          quantity: qty,
+          price: price,
+          status: 'New'
+        })
+      })
+      .then(function(r) {
+        document.getElementById('orderForm').style.display = 'none';
+        document.getElementById('successMsg').classList.add('show');
+        document.getElementById('successMsg').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      })
+      .catch(function() {
+        btn.textContent = '✓ Confirmer la commande';
+        btn.disabled = false;
+        alert('Erreur réseau. Réessayez.');
+      });
+    });
+
+    document.getElementById('navOrderBtn').addEventListener('click', function() { if (!currentProduct) currentProduct = PRODUCTS['shower-head']; openOrder(); });
+    document.getElementById('heroOrderBtn').addEventListener('click', function() { if (!currentProduct) currentProduct = PRODUCTS['shower-head']; openOrder(); });
+    document.getElementById('orderFromProduct').addEventListener('click', openOrder);
+    document.getElementById('closeProduct').addEventListener('click', closeAll);
+    document.getElementById('closeProductSecondary').addEventListener('click', closeAll);
+    document.getElementById('closeOrder').addEventListener('click', closeAll);
+    document.getElementById('cancelOrder').addEventListener('click', closeAll);
+    document.getElementById('overlay').addEventListener('click', closeAll);
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeAll(); });
+  </script>
+</body>
+</html>
